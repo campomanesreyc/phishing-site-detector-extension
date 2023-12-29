@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Noto-Sans";
+  src: url("fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+body {
+  width: 300px;
+  height: 200px;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.logo-div {
+  background-image: url("/svg/bg.svg");
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: #b3cbd5;
+}
+
+.toast {
+  margin-top: 10px !important;
+  opacity: 100% !important;
+}

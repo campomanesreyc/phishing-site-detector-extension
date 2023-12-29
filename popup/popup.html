@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../node_modules/toastr/build/toastr.min.css" />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./popup.css" />
+    <title>Popup</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row p-1 logo-div">
+        <div class="col-12">
+          <img
+            src="../images/logo-with-name.png"
+            alt="logo"
+            class="img-fluid"
+          />
+        </div>
+      </div>
+      <div class="row border-bottom p-2 text-center">
+        <span class="fw-bolder">Menu</span>
+      </div>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="view-site-report"
+      >
+        <div class="col-md-12">
+          <i class="bi bi-eye-fill"></i>
+          &nbsp;View Site Report
+        </div>
+      </a>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="trusted-sites"
+      >
+        <div class="col-md-12">
+          <i class="bi bi-shield-shaded"></i>
+          &nbsp;Trusted Sites
+        </div>
+      </a>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="settings"
+      >
+        <div class="col-md-12">
+          <i class="bi bi-gear-fill"></i>
+          &nbsp;Settings
+        </div>
+      </a>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="privacy-policy"
+      >
+        <div class="col-md-12">
+          <i class="bi bi-person-fill-lock"></i>
+          &nbsp;Privacy Policy
+        </div>
+      </a>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="terms-and-conditions"
+      >
+        <div class="col-md-12">
+          <i class="bi bi-file-text-fill"></i>
+          &nbsp;Terms and Conditions
+        </div>
+      </a>
+      <a
+        href="#"
+        class="row menu-item text-dark border-bottom p-2"
+        id="clear-cache"
+      >
+        <div class="col-8">
+          <i class="bi bi-trash-fill"></i>
+          &nbsp;Clear Cache
+        </div>
+        <div class="col-4 p-0 text-center">
+          <span id="cache-size"></span>
+        </div>
+      </a>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/toastr/build/toastr.min.js"></script>
+    <script src="./popup.js"></script>
+  </body>
+</html>

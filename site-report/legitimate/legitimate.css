@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Noto-Sans";
+  src: url("fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.safe-html {
+  background-color: #a8c853;
+}
+
+.safe-div {
+  background-color: #e5e5e4;
+  margin-top: 5%;
+}
+
+.text-body-secondary {
+  font-size: 0.8rem;
+}
+
+.toast {
+  opacity: 1 !important;
+}
+
+.modal-header {
+  background-color: #025373;
+  color: white;
+}
+
+.btn-close {
+  background-color: white !important;
+}

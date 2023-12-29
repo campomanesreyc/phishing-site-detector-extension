@@ -1,0 +1,12 @@
+@font-face {
+  font-family: "Noto-Sans";
+  src: url("fonts/NotoSans-Regular.ttf") format("truetype");
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.main-div {
+  background-image: url("/svg/bg.svg");
+}

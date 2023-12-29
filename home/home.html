@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="../../node_modules/toastr/build/toastr.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./home.css" />
+
+    <title>Home - Phishingscape</title>
+  </head>
+
+  <body class="homepage">
+    <div class="container-fluid main-div">
+      <div class="container w-25 p-2 text-center">
+        <img
+          src="../images/logo-with-outline.png"
+          alt="Phishingscape Logo"
+          class="img-fluid w-25"
+        />
+      </div>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2 class="text-white fw-bold">PHISHINGSCAPE</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nav Tabs -->
+    <ul class="nav nav-underline mb-3 nav-fill" role="tablist">
+      <!-- Trusted Sites -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="trusted-sites-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#trusted-sites"
+          type="button"
+          role="tab"
+          aria-controls="trusted-sites"
+          aria-selected="true"
+        >
+          <i class="bi bi-shield-shaded"></i>
+          &nbsp;Trusted Sites
+        </button>
+      </li>
+
+      <!-- Settings -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="settings-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#settings"
+          type="button"
+          role="tab"
+          aria-controls="settings"
+          aria-selected="false"
+        >
+          <i class="bi bi-gear-fill"></i>
+          &nbsp;Settings
+        </button>
+      </li>
+
+      <!-- Privacy Policy -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="privacy-policy-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#privacy-policy"
+          type="button"
+          role="tab"
+          aria-controls="privacy-policy"
+          aria-selected="false"
+        >
+          <i class="bi bi-person-fill-lock"></i>
+          &nbsp;Privacy Policy
+        </button>
+      </li>
+
+      <!-- Terms of Use -->
+      <li class="nav-item" role="presentation">
+        <button
+          class="nav-link"
+          id="terms-and-conditions-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#terms-and-conditions"
+          type="button"
+          role="tab"
+          aria-controls="terms-and-conditions"
+          aria-selected="false"
+        >
+          <i class="bi bi-file-text-fill"></i>
+          &nbsp;Terms and Conditions
+        </button>
+      </li>
+    </ul>
+    <!-- Tabs structure -->
+    <div class="tab-content">
+      <!-- Trusted Sites -->
+      <div
+        class="tab-pane fade"
+        id="trusted-sites"
+        role="tabpanel"
+        aria-labelledby="trusted-sites-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-12">
+              Explore your trusted sites here. These are the web destinations
+              you've marked as safe and reliable. Customize your browsing
+              experience by managing and organizing your trusted list.
+            </div>
+          </div>
+          <hr />
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <table class="table table-responsive table-striped border">
+                <thead>
+                  <tr class="text-center">
+                    <th class="d-none">ID</th>
+                    <th class="w-100">URL</th>
+                    <th class="w-100">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+              </table>
+              <div class="alert alert-info" role="alert" id="empty-list-div">
+                <i class="bi bi-info-circle"></i>
+                &nbsp;&nbsp;Your List is Empty
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Settings -->
+      <div
+        class="tab-pane fade"
+        id="settings"
+        role="tabpanel"
+        aria-labelledby="settings-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-12">
+              Customize your experience and tailor Phishingscape to suit your
+              preferences. Explore the options below and take control of your
+              browsing experience and make the most out of extension with these
+              personalized settings.
+            </div>
+          </div>
+          <hr />
+          <div class="row mt-3">
+            <div class="col-md-8 pb-3">
+              <label for="detection-level"> Sensitivity Level </label>
+              <i
+                class="bi bi-info-circle-fill"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-html="true"
+                data-bs-title="<b>High:</b> Maximum caution <br /> <b>Balanced:</b> Security balance <br /> <b>Low:</b> Lenient Detection"
+              ></i>
+              <br />
+              <small class="text-muted">
+                Sensitivity levels define the intensity of the phishing
+                detection algorithm.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select border-black" id="detection-level">
+                <option value="high">High</option>
+                <option value="balanced">Balanced (Recommended)</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+          <hr />
+          <div class="row mt-3">
+            <div class="col-md-8 pb-3">
+              <label for="cleaning-interval">Cache Cleanup</label>
+              <br />
+              <small class="text-muted">
+                This option will automatically clear the extension's cache at
+                intervals of your choosing.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <select class="form-select border-black" id="cleaning-interval">
+                <option value="1">Everyday</option>
+                <option value="3">Every 3 days</option>
+                <option value="7">Every 7 days</option>
+              </select>
+            </div>
+          </div>
+          <hr />
+          <div class="row mt-3">
+            <div class="col-md-8 pb-3">
+              <label for="detection-level">Clear Cache</label>
+              <br />
+              <small class="text-muted">
+                This option allows you to manually initiate a cache cleanup
+                process. You can instantly remove cached data stored by our
+                extension.
+              </small>
+            </div>
+            <div class="col-md-4">
+              <button
+                type="button"
+                class="btn btn-outline-primary w-100"
+                id="clear-cache-btn"
+              >
+                Clear Cache
+              </button>
+            </div>
+          </div>
+          <hr />
+          <div class="row pb-5">
+            <div class="col-md offset-md-8">
+              <button
+                type="button"
+                class="btn btn-success w-100"
+                id="saveSettingsBtn"
+              >
+                <i class="bi bi-floppy-fill"></i>
+                &nbsp;&nbsp;Save Settings
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Privacy Policy -->
+      <div
+        class="tab-pane fade"
+        id="privacy-policy"
+        role="tabpanel"
+        aria-labelledby="privacy-policy-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-12" id="priv-pol-container"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Terms and Conditions -->
+      <div
+        class="tab-pane fade"
+        id="terms-and-conditions"
+        role="tabpanel"
+        aria-labelledby="terms-and-conditions-tab"
+        tabindex="0"
+      >
+        <div class="container">
+          <div class="row mt-5">
+            <div class="col-md-12" id="t-and-c-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../node_modules/toastr/build/toastr.min.js"></script>
+    <script src="./home.js"></script>
+  </body>
+</html>
