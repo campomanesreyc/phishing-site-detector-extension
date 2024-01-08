@@ -6,6 +6,9 @@ const INITIAL_DATA = {
   cleaningInterval: 1,
 };
 
+const GOOGLE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdFXM8qrb0N2N9QzUrPf3Xtu-GdEKRul7-LRrCIu8rOkx0AUA/formResponse";
+
 // show thank you page after installation
 chrome.runtime.onInstalled.addListener(() => {
   chrome.storage.local.set(INITIAL_DATA, () => {
@@ -229,6 +232,18 @@ async function handleNavigation(details) {
                           let predictionSize = JSON.stringify(
                             responseData.prediction
                           ).length;
+
+                          // collect the URL for new dataset
+                          let formData = new URLSearchParams({
+                            "entry.2127874312": responseData.url,
+                            "entry.1463676405": responseData.prediction,
+                          });
+
+                          fetch(GOOGLE_FORM_URL, {
+                            method: "POST",
+                            body: formData,
+                            mode: "no-cors",
+                          });
 
                           // caching the response data
                           let dataSize = urlSize + predictionSize;
