@@ -202,10 +202,9 @@ function showWarningPage(prediction, url, tabId) {
 
 // analyzing the URL
 async function handleNavigation(details) {
-  console.log(details);
   let url = details.url;
-  let tabId = details.tabId;
 
+  let tabId = details.tabId;
   if (details.frameType === "outermost_frame") {
     if (isValidUrl(url)) {
       notInTrustedSites(url, (isInTrustedSites) => {
@@ -218,7 +217,6 @@ async function handleNavigation(details) {
                 if (isNotCached) {
                   getDetectionLevel((detectionLevel) => {
                     let apiRequest = buildApiRequest(url, detectionLevel);
-
                     // sending the API request
                     fetch(apiRequest.url, {
                       method: apiRequest.method,
@@ -232,23 +230,19 @@ async function handleNavigation(details) {
                           let predictionSize = JSON.stringify(
                             responseData.prediction
                           ).length;
-
                           // collect the URL for new dataset
                           let formData = new URLSearchParams({
                             "entry.2127874312": responseData.url,
                             "entry.1463676405": responseData.prediction,
                           });
-
                           fetch(GOOGLE_FORM_URL, {
                             method: "POST",
                             body: formData,
                             mode: "no-cors",
                           });
-
                           // caching the response data
                           let dataSize = urlSize + predictionSize;
                           cacheResponse(responseData, dataSize, () => {});
-
                           showWarningPage(
                             responseData.prediction,
                             responseData.url,
