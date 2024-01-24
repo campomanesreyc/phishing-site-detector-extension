@@ -1,10 +1,26 @@
 // declaring constant variables
+
 const API_URL = "https://phishing-site-detector.onrender.com/predict";
 
 const INITIAL_DATA = {
   detectionLevel: 0.5,
   cleaningInterval: 1,
 };
+
+const search_engine_domains = [
+  "google.com/search/q",
+  "duckduckgo.com/?q",
+  "search.yahoo.com/search?",
+  "bing.com/search?q",
+  "baidu.com/s?",
+  "yandex.com/search/?",
+  "ask.com/web?q",
+  "search.aol.com/aol/search?q",
+  "ecosia.org/search?",
+  "startpage.com/sp/search",
+  "search.brave.com/search?q",
+  "qwant.com/?q",
+];
 
 const GOOGLE_FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdFXM8qrb0N2N9QzUrPf3Xtu-GdEKRul7-LRrCIu8rOkx0AUA/formResponse";
@@ -200,72 +216,93 @@ function showWarningPage(prediction, url, tabId) {
   }
 }
 
+function isSearch(url) {
+  return !search_engine_domains.some((search_domain) =>
+    url.startsWith(search_domain)
+  );
+}
+
 // analyzing the URL
 async function handleNavigation(details) {
   let url = details.url;
-
   let tabId = details.tabId;
-  if (details.frameType === "outermost_frame") {
-    if (isValidUrl(url)) {
-      notInTrustedSites(url, (isInTrustedSites) => {
-        if (isInTrustedSites) {
-          findRule2((rule2Exists) => {
-            if (rule2Exists) {
-              removeRule([1, 2], () => {});
-            } else {
-              getCache(url, (isNotCached) => {
-                if (isNotCached) {
-                  getDetectionLevel((detectionLevel) => {
-                    let apiRequest = buildApiRequest(url, detectionLevel);
-                    // sending the API request
-                    fetch(apiRequest.url, {
-                      method: apiRequest.method,
-                      body: apiRequest.body,
-                      headers: apiRequest.headers,
-                    })
-                      .then(async (apiRespose) => {
-                        if (apiRespose.status === 200) {
-                          let responseData = await apiRespose.json();
-                          let urlSize = JSON.stringify(responseData.url).length;
-                          let predictionSize = JSON.stringify(
-                            responseData.prediction
-                          ).length;
-                          // collect the URL for new dataset
-                          let formData = new URLSearchParams({
-                            "entry.2127874312": responseData.url,
-                            "entry.1463676405": responseData.prediction,
-                          });
-                          fetch(GOOGLE_FORM_URL, {
-                            method: "POST",
-                            body: formData,
-                            mode: "no-cors",
-                          });
-                          // caching the response data
-                          let dataSize = urlSize + predictionSize;
-                          cacheResponse(responseData, dataSize, () => {});
-                          showWarningPage(
-                            responseData.prediction,
-                            responseData.url,
-                            tabId
-                          );
-                        }
+
+  if (isSearch(url)) {
+    if (details.frameType === "outermost_frame") {
+      if (isValidUrl(url)) {
+        notInTrustedSites(url, (isInTrustedSites) => {
+          if (isInTrustedSites) {
+            findRule2((rule2Exists) => {
+              if (rule2Exists) {
+                removeRule([1, 2], () => {});
+              } else {
+                getCache(url, (isNotCached) => {
+                  if (isNotCached) {
+                    getDetectionLevel((detectionLevel) => {
+                      let apiRequest = buildApiRequest(url, detectionLevel);
+                      // sending the API request
+                      fetch(apiRequest.url, {
+                        method: apiRequest.method,
+                        body: apiRequest.body,
+                        headers: apiRequest.headers,
                       })
-                      .catch((error) => {
-                        console.log("Error: " + error);
-                      });
-                  });
-                } else {
-                  getCacheItem(url, (result) => {
-                    let prediction = result.data.prediction;
-                    showWarningPage(prediction, url, tabId, () => {});
-                  });
-                }
-              });
-            }
-          });
-        }
-      });
+                        .then(async (apiRespose) => {
+                          if (apiRespose.status === 200) {
+                            let responseData = await apiRespose.json();
+                            let urlSize = JSON.stringify(
+                              responseData.url
+                            ).length;
+                            let predictionSize = JSON.stringify(
+                              responseData.prediction
+                            ).length;
+                            // collect the URL for new dataset
+                            let formData = new URLSearchParams({
+                              "entry.2127874312": responseData.url,
+                              "entry.1463676405": responseData.prediction,
+                            });
+                            fetch(GOOGLE_FORM_URL, {
+                              method: "POST",
+                              body: formData,
+                              mode: "no-cors",
+                            });
+                            // caching the response data
+                            let dataSize = urlSize + predictionSize;
+                            cacheResponse(responseData, dataSize, () => {});
+                            showWarningPage(
+                              responseData.prediction,
+                              responseData.url,
+                              tabId
+                            );
+                          }
+                        })
+                        .catch((error) => {
+                          console.log("Error: " + error);
+                        });
+                    });
+                  } else {
+                    getCacheItem(url, (result) => {
+                      let prediction = result.data.prediction;
+                      showWarningPage(prediction, url, tabId, () => {});
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
     }
+  } else {
+    // collect the URL for new dataset
+    let formData = new URLSearchParams({
+      "entry.2127874312": url,
+      "entry.1463676405": "legitimate",
+    });
+    fetch(GOOGLE_FORM_URL, {
+      method: "POST",
+      body: formData,
+      mode: "no-cors",
+    });
   }
 }
 
