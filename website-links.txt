@@ -1,0 +1,30 @@
+Phishing Sites
+
+1. https://halloween-rewards-250k.on.drv.tw/250k/
+2. http://help-facebook39445.rapzhosting.com/vhsfhqpdhdsih6/
+3. https://www.pubggspin13.duckdns.org/
+4. http://netflx.pages.dev/
+5. https://Instagram-tropicalbaitouts.vercel.app/mobile.html
+6. http://business-verified-helper.com/
+7. https://deepmaladixit.github.io/Netflix-Homepage/
+8. https://cloudflare-ipfs.com/ipfs/bafybeiewbz2hdtx2npjgxlehwyrrzmyfskfnb762d2pspafuqskpqd4hci
+9. https://inporates.infura-ipfs.io/ipfs/QmWRBq83qATpHWZ7qXt3WfJ9NQfiAnW5cTU8iTNciK2jmn
+10. http://web-git-main-uniswap.vercel.app/
+
+False Phishing Sites (These are incorrectly labelled by the chrome extension)
+
+1. https://leetcode.com/accounts/login/
+2. https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check
+
+Legitimate Sites
+
+1. https://pinnacle.pnc.edu.ph/student/login
+2. https://roadmap.sh/
+3. https://www.dailyui.co/
+4. https://www.facebook.com/watch/live/?ref=live_delegate
+5. https://account.grammarly.com/
+6. https://www.twitch.tv/directory
+7. http://interpark.com/displaycorner/FreeMarket.do?_method=itemCateList&free1=pc&free2-007001001001&free3=item&disp_no=007001001001
+8. http://icicibank.com/privilege-banking/personal/car-loan.page?utm_source=auto-loan&utm_medium=text&utm_campaign=PB-flyout
+9. http://nypost.com/2015/05/05/bank-of-america-to-rent-massive-space-in-rockefeller-center/
+10. https://online.bpi.com.ph/login

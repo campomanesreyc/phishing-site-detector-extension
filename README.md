@@ -6,13 +6,21 @@ Phishingscape is a Chrome extension that helps protect users from phishing websi
 
 - [Phishingscape](#phishingscape)
 - [Table of Contents](#table-of-contents)
+- [Disclaimer](#disclaimer)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [How it Works](#how-it-works)
 - [Phishingscape](#phishingscape)
 - [Installation](#installation)
+- [Website Links for Testing Purposes](#website-links-for-testing-purposes)
 - [User Manual](#user-manual)
-- [Links](#links)
+- [Related Links](#related-links)
+
+## Disclaimer
+
+This project, Phishingscape, is developed as part of a college Capstone Project for educational purposes. While the extension aims to detect phishing sites, it may not always accurately identify all phishing attempts. Users are advised to use this tool as a supplementary aid and not as a sole line of defense. Always practice safe browsing habits and remain vigilant while visiting unfamiliar websites.
+
+The author of this extension assumes no responsibility for any damages or losses incurred while using this tool.
 
 ## Features
 
@@ -54,7 +62,7 @@ Phishingscape is currently supported on the following browsers:
 - Opera
 - Vivaldi
 
-### Steps:
+### Steps
 
 1. Clone this repository or download the ZIP file and extract it.
 2. Open your preferred browser and navigate to the **Extensions** menu.
@@ -63,12 +71,23 @@ Phishingscape is currently supported on the following browsers:
 5. Locate and choose the `phishing-site-detector-extension` folder
 6. _(Optional)_ Pin the extension for easier access.
 
+## Website Links for Testing Purposes
+
+> **WARNING:** The phishing links in this file are for testing purposes only. These sites may contain harmful content, so do not input any sensitive information.
+
+The links are provided for testing and demo purposes and should not be used to submit any malicious activity. The author is not responsible for any misuse of the provided links.
+
+### Phishing and Legitimate Links
+
+For a list of **phishing links** and **legitimate links**, refer to the [website-links.txt](./website-links.txt) file.
+
 ## User Manual
 
 For detailed instructions on how to use Phishingscape, please refer to the [User Manual](./user-manual.pdf) available in this repository.
 
-## Links
+## Related Links
 
 - [API Repository](https://github.com/campomanesreyc/phishing-site-detector-api)
 - [Website](https://phishingscape.netlify.app/)
+- [Video Demo](https://www.youtube.com/watch?v=hcHgfYz0CZE)
 - [Phishingscape on the Chrome Web Store](https://chromewebstore.google.com/detail/phishingscape/ffjkffecdcomjjmdablhcknhgiajiako)
