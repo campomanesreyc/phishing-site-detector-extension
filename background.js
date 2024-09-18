@@ -1,6 +1,6 @@
 // declaring constant variables
 
-const API_URL = "https://phishing-site-detector.onrender.com/predict";
+const API_URL = " http://127.0.0.1:8000/predict";
 
 const INITIAL_DATA = {
   detectionLevel: 0.5,
